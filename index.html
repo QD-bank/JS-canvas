@@ -5,8 +5,131 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>画板</title>
+    <link rel="stylesheet" href="./style.css" type="text/css">
 </head>
 <body>
+    <canvas id="canvas"></canvas>  
     
+    <script>
+
+        //获取canvas
+        let canvas = document.getElementById("canvas");
+        //canvas变成文档宽度
+        canvas.width = document.documentElement.clientWidth
+        //canvas变成文档高度
+        canvas.height = document.documentElement.clientHeight        
+        //画线
+        let ctx = canvas.getContext("2d");
+        
+        ctx.fillStyle = "pink";
+        //圆形描边
+        ctx.strokeStyle = "none"
+
+        let painting = false
+
+        //按下鼠标开始
+        canvas.onmousedown = (e) =>{
+            painting = true
+        }
+
+        //鼠标移动事件
+        canvas.onmousemove = (e) => {
+            if(painting === true){
+
+            //ctx.fillRect(e.clientX - 5, e.clientY -5,10,10);
+
+            ctx.beginPath();
+            ctx.arc(e.clientX, e.clientY, 10, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            }else{
+                console.log("什么都不做")
+            }
+           
+        }
+        
+        //鼠标松开停止
+        canvas.onmouseup = (e) => {
+            painting = false
+        }
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // div效率差
+
+
+        // canvsa.onmousemove = (e) => {
+        //     console.log(e.clientX)
+        //     console.log(e.clientY)
+        //     //console.log调试大法
+        //     let div = document.createElement('div')
+        //     div.style.position = 'absolute'
+        //     div.style.left = e.clientX + 'px'
+        //     div.style.top = e.clientY + 'px'
+        //     div.style.border = '1px solid pink'
+        //     div.style.width = '6px'
+        //     div.style.height = '6px'
+        //     div.style.background = 'pink'
+        //     //点击画板点以鼠标居中
+        //     div.style.marginLeft = '-3px'
+        //     div.style.marginTop = '-3px'
+
+        //     //圆点
+        //     div.style.borderRadius = '50%'
+
+        //     //点击画板添加一个div
+        //     canvsa.appendChild(div)
+
+        // }
+
+        // //画点
+        // canvsa.onclick = (e) => {
+        //     console.log(e.clientX)
+        //     console.log(e.clientY)
+        //     //console.log调试大法
+        //     let div = document.createElement('div')
+        //     div.style.position = 'absolute'
+        //     div.style.left = e.clientX + 'px'
+        //     div.style.top = e.clientY + 'px'
+        //     div.style.border = '1px solid pink'
+        //     div.style.width = '6px'
+        //     div.style.height = '6px'
+        //     div.style.background = 'pink'
+        //     //点击画板点以鼠标居中
+        //     div.style.marginLeft = '-3px'
+        //     div.style.marginTop = '-3px'
+
+        //     //圆点
+        //     div.style.borderRadius = '50%'
+
+        //     //点击画板添加一个div
+        //     canvsa.appendChild(div)
+
+        // }
+    </script>
 </body>
 </html>
