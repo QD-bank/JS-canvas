@@ -27,12 +27,25 @@
 
         let painting = false
 
+        //移动端画板
+        var isTouchDevice = 'ontouchstart' in document.documentElement;
+        if(isTouchDevice) {
+            canvas.ontouchmove = (e) => {
+                let x = e.touches[0].clientX
+                let y = e.touches[0].clientY
+                ctx.beginPath()
+                ctx.arc(x,y, 10, 0, 2 * Math.PI)
+                ctx.stroke()
+                ctx.fill()
+            }
+        }
+
         //按下鼠标开始
         canvas.onmousedown = (e) =>{
             painting = true
         }
 
-        //鼠标移动事件
+        //PC鼠标移动事件
         canvas.onmousemove = (e) => {
             if(painting === true){
 
@@ -54,33 +67,10 @@
             painting = false
         }
 
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 
         // div效率差
-
 
         // canvsa.onmousemove = (e) => {
         //     console.log(e.clientX)
